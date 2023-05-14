@@ -1,0 +1,49 @@
+<template>
+    <div class = "app">
+        <div class="box">
+            <h1>BMI Calculator</h1>
+            <template if:true={result}>
+            <section>
+                <h2>Your BMI is:</h2>
+                <div class="result-value">{bmiValue}</div>
+                <h2>so you are:</h2>
+                <div class="result-value">{result}</div>
+                <button onclick={recalculate} class="slds-button slds-button_stretch">Re-Calculate</button>
+            </section>
+        </template>
+        <template if:false={result}>
+            <form onsubmit={submitHandler}>
+                <div class="slds-form-element slds-var-m-top_medium">
+                    <label class="slds-form-element__label" for="text-input-height">
+                    Height(cm)</label>
+                    <div class="slds-form-element__control slds-text-title_bold">
+                    <input type="number" id="text-input-height" name="height" value={height} onchange={inputHandler} style="color:black" min="0" placeholder="Enter Height" required="" class="slds-input" />
+                    </div>
+                </div>
+                <div class="slds-form-element slds-var-m-top_medium" >
+                    <label class="slds-form-element__label" for="text-input-weight">
+                    weight(kg)</label>
+                    <div class="slds-form-element__control slds-text-title_bold">
+                    <input type="number" id="text-input-weight" name="weight" value={weight} onchange={inputHandler} style="color:black" min="0" placeholder="Enter Weight" required="" class="slds-input" />
+                    </div>
+                </div>
+                <div class="slds-var-m-around_large" style="font-size: 22px;" >
+                    <button class="slds-button slds-button_stretch">Calculate</button>
+                </div>
+            </form>
+        </template>
+            <div class="info-wrapper">
+                <h2>What BMI means</h2>
+                <p class="slds-var-m-bottom_medium">Once you have measure BMI, you can determine healthy weight range, if your BMI is:</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium" >under 18.5</h3>
+                <p class="slds-var-m-bottom_medium">You are under weight and probably malnourished</p>
+                <h3 class="slds-text-color_success slds-text-heading_medium">Between 18.5 to 24.5</h3>
+                <p class="slds-var-m-bottom_medium">Your healthy weight range for young and middel age-adults</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium">25.0 to 29.9</h3>
+                <p class="slds-var-m-bottom_medium">You are overweight</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium">Over 30</h3>
+                <p class="slds-var-m-bottom_medium">You are Obese.</p>
+            </div>
+        </div>
+    </div>
+</template>
